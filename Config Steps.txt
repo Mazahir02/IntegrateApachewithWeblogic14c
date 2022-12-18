@@ -33,14 +33,8 @@ Steps :
  WebLogicPort 7001
 </Location>
 
-
+#Redirect hostname/SampleWebApp -> Cluster (localhost:7003/SampleWebApp,localhost:7005/SampleWebApp)
 <Location /SampleWebApp>
  SetHandler weblogic-handler
  WebLogicCluster localhost:7003,localhost:7005
 </Location>
-
-
-
-
-
-http://localhost/SampleWebApp?__WebLogicBridgeConfig
