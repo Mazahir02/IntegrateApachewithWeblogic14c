@@ -1,0 +1,46 @@
+Steps :
+
+ 1. yum update -y (optional)
+ 2. yum install httpd
+ 3. systemctl start  httpd -y
+ 4. copy mod_wl_24.so to /etc/httpd/modules
+ 5. cd /etc/ld.so.conf.d
+	echo /u02/softwares/WLSPlugin14/lib > wlsplugin.conf
+	ldconfig
+	reboot
+ 6. Disable SELinux vi /etc/selinux/config
+	reboot
+ 7. wget https://www.openssl.org/source/openssl-1.1.1o.tar.gz
+	yum install perl -y
+	./config (openssl 1.1)
+	make
+	make install
+
+	ln -s /usr/local/lib64/libssl.so.1.1  /usr/lib64/libssl.so.1.1
+	ln -s /usr/local/lib64/libssl.so.1.1  /usr/lib/libssl.so.1.1
+	
+	ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
+	ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.1
+ 
+ 8. apachectl start
+
+
+
+
+<Location /console>
+ SetHandler weblogic-handler
+ WebLogicHost oracle-vm.weblogic.com
+ WebLogicPort 7001
+</Location>
+
+
+<Location /SampleWebApp>
+ SetHandler weblogic-handler
+ WebLogicCluster oracle-vm.weblogic.com:7003,oracle-vm.weblogic.com:7005
+</Location>
+
+
+
+
+
+http://oracle-vm.weblogic.com/SampleWebApp?__WebLogicBridgeConfig
