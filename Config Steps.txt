@@ -26,21 +26,21 @@ Steps :
 
 
 
-
+#Redirect hostname/console -> localhost:7001/console 
 <Location /console>
  SetHandler weblogic-handler
- WebLogicHost oracle-vm.weblogic.com
+ WebLogicHost localhost
  WebLogicPort 7001
 </Location>
 
 
 <Location /SampleWebApp>
  SetHandler weblogic-handler
- WebLogicCluster oracle-vm.weblogic.com:7003,oracle-vm.weblogic.com:7005
+ WebLogicCluster localhost:7003,localhost:7005
 </Location>
 
 
 
 
 
-http://oracle-vm.weblogic.com/SampleWebApp?__WebLogicBridgeConfig
+http://localhost/SampleWebApp?__WebLogicBridgeConfig
