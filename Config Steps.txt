@@ -4,13 +4,14 @@ Steps :
  2. yum install httpd -y
  3. systemctl start  httpd
  4. copy mod_wl_24.so to /etc/httpd/modules
- 5. cd /etc/ld.so.conf.d
+ 5. Add LoadModule weblogic_module modules/mod_wl_24.so to /etc/http/conf/http.conf
+ 6. cd /etc/ld.so.conf.d
 	echo /u02/softwares/WLSPlugin14/lib > wlsplugin.conf
 	ldconfig
 	reboot
- 6. Disable SELinux vi /etc/selinux/config
+ 7. Disable SELinux vi /etc/selinux/config
 	reboot
- 7. wget https://www.openssl.org/source/openssl-1.1.1o.tar.gz
+ 8. wget https://www.openssl.org/source/openssl-1.1.1o.tar.gz
 	yum install perl -y
 	./config (openssl 1.1)
 	make
@@ -22,7 +23,7 @@ Steps :
 	ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib64/libcrypto.so.1.1
 	ln -s /usr/local/lib64/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.1
  
- 8. apachectl start
+ 9. apachectl start
 
 
 
